@@ -5,22 +5,22 @@ import java.util.*;
 public class SupervisoraDeConexao extends Thread
 {
     private double              valor=0;
-    private Parceiro            usuario;
+    private Parceiro            jogador;
     private Socket              conexao;
-    private ArrayList<Parceiro> usuarios;
+    private ArrayList<Parceiro> jogadores;
 
     public SupervisoraDeConexao
-    (Socket conexao, ArrayList<Parceiro> usuarios)
+    (Socket conexao, ArrayList<Parceiro> jogadores)
     throws Exception
     {
         if (conexao==null)
             throw new Exception ("Conexao ausente");
 
-        if (usuarios==null)
+        if (jogadores==null)
             throw new Exception ("Usuarios ausentes");
 
         this.conexao  = conexao;
-        this.usuarios = usuarios;
+        this.jogadores = jogadores;
     }
 
     public void run ()
@@ -58,7 +58,7 @@ public class SupervisoraDeConexao extends Thread
 
         try
         {
-            this.usuario =
+            this.jogador =
             new Parceiro (this.conexao,
                           receptor,
                           transmissor);
@@ -68,15 +68,15 @@ public class SupervisoraDeConexao extends Thread
 
         try
         {
-            synchronized (this.usuarios)
+            synchronized (this.jogadores)
             {
-                this.usuarios.add (this.usuario);
+                this.jogadores.add (this.jogador);
             }
 
 
             for(;;)
             {
-                Comunicado comunicado = this.usuario.envie ();
+                Comunicado comunicado = this.jogador.envie ();
 
                 if      (comunicado==null)
                     return;
@@ -98,15 +98,15 @@ public class SupervisoraDeConexao extends Thread
                 }
                 else if (comunicado instanceof PedidoDeResultado)
                 {
-                    this.usuario.receba (new Resultado (this.valor));
+                    this.jogador.receba (new Resultado (this.valor));
                 }
                 else if (comunicado instanceof PedidoParaSair)
                 {
                     synchronized (this.usuarios)
                     {
-                        this.usuarios.remove (this.usuario);
+                        this.jogadores.remove (this.usuario);
                     }
-                    this.usuario.adeus();
+                    this.jogador.adeus();
                 }
             }
         }
