@@ -6,31 +6,32 @@ public class AceitadoraDeConexao extends Thread
     private static final int PORTA_PADRAO = 3000;
 
     private ServerSocket        pedido;
-    private ArrayList<Parceiro> usuarios;
+    private ArrayList<Parceiro> jogadores;
 
     public AceitadoraDeConexao
-    (String escolha, ArrayList<Parceiro> usuarios)
+    (String escolha, ArrayList<Parceiro> jogadores)
     throws Exception
     {
         int porta = AceitadoraDeConexao.PORTA_PADRAO;
 
         if (escolha!=null)
         {
-            try
-            {
-                porta = Integer.parseInt(escolha);
-                this.pedido = new ServerSocket (porta);
-            }
-            catch (Exception  erro)
-            {
-                throw new Exception ("Porta invalida");
-            }
-        }
+			porta = Integer.parseInt(escolha);
+		}
 
-        if (usuarios==null)
+       	try
+        {
+            this.pedido = new ServerSocket (porta);
+        }
+        catch (Exception  erro)
+        {
+            throw new Exception ("Porta invalida");
+		}
+
+        if (jogadores==null)
             throw new Exception ("Usuarios ausentes");
 
-        this.usuarios = usuarios;
+        this.jogadores = jogadores;
     }
 
     public void run ()
@@ -52,7 +53,7 @@ public class AceitadoraDeConexao extends Thread
             try
             {
                 supervisoraDeConexao =
-                new SupervisoraDeConexao (conexao, usuarios);
+                new SupervisoraDeConexao (conexao, jogadores);
             }
             catch (Exception erro)
             {} // sei que passei parametros corretos para o construtor
