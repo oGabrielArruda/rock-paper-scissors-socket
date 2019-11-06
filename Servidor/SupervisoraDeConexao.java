@@ -84,11 +84,14 @@ public class SupervisoraDeConexao extends Thread
 
                 nmrJogadas++;
 
-                else if(comunicado instanceof PedidoDeTesoura)
+                else if(comunicado instanceof PedidoDePedra)
+                	this.jogador.setJogada(new Jogada("pedra"));
 
                 else if(comunicado instanceof PedidoDePapel)
+                	this.jogador.setJogada(new Jogada("papel"));
 
                 else if(comunicado instanceof PedidoDeTesoura)
+                	this.jogador.setJogada(new Jogada("tesoura"));
 
                 if(nmrJogada == 2)
                 {
