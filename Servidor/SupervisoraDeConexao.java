@@ -8,6 +8,7 @@ public class SupervisoraDeConexao extends Thread
     private Parceiro            jogador;
     private Socket              conexao;
     private ArrayList<Parceiro> jogadores;
+    private static int nmrJogadas = 0;
 
     public SupervisoraDeConexao
     (Socket conexao, ArrayList<Parceiro> jogadores)
@@ -80,26 +81,24 @@ public class SupervisoraDeConexao extends Thread
 
                 if      (comunicado==null)
                     return;
-                else if (comunicado instanceof PedidoDeAdicao)
+
+                nmrJogadas++;
+
+                else if(comunicado instanceof PedidoDeTesoura)
+
+                else if(comunicado instanceof PedidoDePapel)
+
+                else if(comunicado instanceof PedidoDeTesoura)
+
+                if(nmrJogada == 2)
                 {
-                    this.valor += ((PedidoDeAdicao)comunicado).getValorParaAdicionar();
-                }
-                else if (comunicado instanceof PedidoDeSubtracao)
-                {
-                    this.valor -= ((PedidoDeSubtracao)comunicado).getValorParaSubtrair();
-                }
-                else if (comunicado instanceof PedidoDeMultiplicacao)
-                {
-                    this.valor *= ((PedidoDeMultiplicacao)comunicado).getValorParaMultiplicar();
-                }
-                else if (comunicado instanceof PedidoDeDivisao)
-                {
-                    this.valor /= ((PedidoDeDivisao)comunicado).getValorParaDividir();
-                }
-                else if (comunicado instanceof PedidoDeResultado)
-                {
-                    this.jogador.receba (new Resultado (this.valor));
-                }
+					String ganhador = quemGanhou();
+					for(Parceiro jogador:this.jogadores)
+                		jogador.receba(new Resultado(ganhador));
+				}
+
+
+
                 else if (comunicado instanceof PedidoParaSair)
                 {
                     synchronized (this.usuarios)
@@ -123,4 +122,18 @@ public class SupervisoraDeConexao extends Thread
             return;
         }
     }
+
+    private String quemGanhou()
+    {
+		Jogada jogada1 = this.jogadores[0].getJogada();
+		Jogada jogada2 = this.jogadores[1].getJogada();
+
+		int comp = jogada1.compareTo(jogada2);
+
+		if(comp == 0)
+			return "empate";
+		if(comp > 0)
+			return this.usuarios[0].getNome();
+		return this.usuarios[1].getNome();
+	}
 }

@@ -7,6 +7,7 @@ public class Parceiro
     private Socket             conexao;
     private ObjectInputStream  receptor;
     private ObjectOutputStream transmissor;
+    private Jogada jogada;
 
     public Parceiro (Socket             conexao,
                      ObjectInputStream  receptor,
@@ -51,6 +52,13 @@ public class Parceiro
             throw new Exception ("Erro de recepcao");
         }
     }
+
+    public setJogada(Jogada jogada) throws Exception
+    {
+		if(jogada == null)
+			throw new Exception("Jogada inválida");
+		this.jogada = jogada;
+	}
 
     public void adeus () throws Exception
     {
