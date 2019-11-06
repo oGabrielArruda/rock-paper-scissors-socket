@@ -6,4 +6,9 @@ public class Resultado extends Comunicado
 	{
 		this.ganhador = ganhador;
 	}
+
+	public String getGanhador()
+	{
+		return this.ganhador;
+	}
 }

@@ -20,6 +20,8 @@ public class SupervisoraDeConexao extends Thread
         if (jogadores==null)
             throw new Exception ("Usuarios ausentes");
 
+		if(nome == null)
+			throw new Exception ("Nome ausente");
         this.conexao  = conexao;
         this.jogadores = jogadores;
     }
@@ -33,7 +35,7 @@ public class SupervisoraDeConexao extends Thread
             new ObjectInputStream(
             this.conexao.getInputStream());
         }
-        catch (Exception err0)
+        catch (Exception erro)
         {
             return;
         }
@@ -82,26 +84,22 @@ public class SupervisoraDeConexao extends Thread
                 if      (comunicado==null)
                     return;
 
-                nmrJogadas++;
+                if(comunicado instanceof PedidoDeNome)
+                	this.jogador.setNome((PedidoDeNome) comunicado.getNome())
+				else
+                	nmrJogadas++;
 
-                else if(comunicado instanceof PedidoDePedra)
-                	this.jogador.setJogada(new Jogada("pedra"));
+               if(comunicado instanceof PedidoDeJogada)
+                	this.jogador.setJogada(((PedidoDeJogada)comunicado).getValorJogada());
 
-                else if(comunicado instanceof PedidoDePapel)
-                	this.jogador.setJogada(new Jogada("papel"));
 
-                else if(comunicado instanceof PedidoDeTesoura)
-                	this.jogador.setJogada(new Jogada("tesoura"));
-
-                if(nmrJogada == 2)
+                if(nmrJogadas == 2)
                 {
 					String ganhador = quemGanhou();
 					for(Parceiro jogador:this.jogadores)
                 		jogador.receba(new Resultado(ganhador));
+                	nmrJogadas = 0;
 				}
-
-
-
                 else if (comunicado instanceof PedidoParaSair)
                 {
                     synchronized (this.usuarios)

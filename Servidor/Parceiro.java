@@ -8,6 +8,7 @@ public class Parceiro
     private ObjectInputStream  receptor;
     private ObjectOutputStream transmissor;
     private Jogada jogada;
+    private String nome;
 
     public Parceiro (Socket             conexao,
                      ObjectInputStream  receptor,
@@ -58,6 +59,13 @@ public class Parceiro
 		if(jogada == null)
 			throw new Exception("Jogada inválida");
 		this.jogada = jogada;
+	}
+
+	public void setNome(String nome) throws Exception
+	{
+		if(nome == null)
+			throw new Exception("Nome inválido");
+		this.nome = nome;
 	}
 
     public void adeus () throws Exception
