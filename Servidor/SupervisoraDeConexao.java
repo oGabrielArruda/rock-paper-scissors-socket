@@ -20,8 +20,6 @@ public class SupervisoraDeConexao extends Thread
         if (jogadores==null)
             throw new Exception ("Usuarios ausentes");
 
-		if(nome == null)
-			throw new Exception ("Nome ausente");
         this.conexao  = conexao;
         this.jogadores = jogadores;
     }
@@ -85,7 +83,7 @@ public class SupervisoraDeConexao extends Thread
                     return;
 
 				  if(comunicado instanceof PedidoDeNome)
-				        this.jogador.setNome((PedidoDeNome) comunicado.getNome())
+				        this.jogador.setNome(((PedidoDeNome)comunicado).getNome());
 				  else
 				  {
 
@@ -102,9 +100,9 @@ public class SupervisoraDeConexao extends Thread
 					    }
                 		else if (comunicado instanceof PedidoParaSair)
                 		{
-                	    	synchronized (this.usuarios)
+                	    	synchronized (this.jogadores)
                 	    	{
-                	    	    this.jogadores.remove (this.usuario);
+                	    	    this.jogadores.remove (this.jogador);
                 	    	}
                 	    	this.jogador.adeus();
                 		}
@@ -127,15 +125,15 @@ public class SupervisoraDeConexao extends Thread
 
     private String quemGanhou()
     {
-		Jogada jogada1 = this.jogadores[0].getJogada();
-		Jogada jogada2 = this.jogadores[1].getJogada();
+		Jogada jogada1 = this.jogadores.get(0).getJogada();
+		Jogada jogada2 = this.jogadores.get(1).getJogada();
 
 		int comp = jogada1.compareTo(jogada2);
 
 		if(comp == 0)
 			return "empate";
 		if(comp > 0)
-			return this.usuarios[0].getNome();
-		return this.usuarios[1].getNome();
+			return this.jogadores.get(0).getNome();
+		return this.jogadores.get(0).getNome();
 	}
 }
