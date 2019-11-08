@@ -132,7 +132,12 @@ public class Cliente
 							break;
 
 						case 'C':
+						try{
 							servidor.receba (new PedidoDeJogada("tesoura"));
+						}
+						catch(Exception e){
+							System.out.println(e.getMessage());
+							}
 							break;
 					}
 					try

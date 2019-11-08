@@ -6,7 +6,7 @@ public class Jogada
 	{
 		if(valor == null)
 			throw new Exception("Valor para jogada inválida");
-		this.valor = "valor";
+		this.valor = valor;
 	}
 
 	public int compareTo(Jogada outra)
