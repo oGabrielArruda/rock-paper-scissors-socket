@@ -29,7 +29,7 @@ public class Cliente
 		    conexao = new Socket (host, porta);
 		}
 		catch (Exception erro)
-		{			
+		{
 		    erro.printStackTrace();
 
 		    System.err.println ("Indique o servidor e a porta corretos!\n");
@@ -44,7 +44,7 @@ public class Cliente
 		    conexao.getOutputStream());
 		}
 		catch (Exception erro)
-		{			
+		{
 		    erro.printStackTrace();
 
 		    System.err.println ("Indique o servidor e a porta corretos!\n");
@@ -59,20 +59,31 @@ public class Cliente
 		    conexao.getInputStream());
 		}
 		catch (Exception erro)
-		{			
+		{
 		    erro.printStackTrace();
 
 		    System.err.println ("Indique o servidor e a porta corretos!\n");
 		    return;
 		}
 
+		String nome = null;
+		try
+		{
+			nome = Teclado.getUmString();
+		}
+		catch(Exception ex)
+		{
+			Syste.err.println("Nome inválido!");
+			return;
+		}
+
 		Parceiro servidor=null;
 		try
 		{
-		    servidor = new Parceiro (conexao, receptor, transmissor);
+		    servidor = new Parceiro (conexao, receptor, transmissor, nome);
 		}
 		catch (Exception erro)
-		{			
+		{
 		    erro.printStackTrace();
 
 		    System.err.println ("Indique o servidor e a porta corretos!\n");
@@ -82,14 +93,10 @@ public class Cliente
 		char opcao=' ';
 		do
 		{
-		    System.out.print ("Sua opcao (" +
-				      "A=Adicao/" +
-				      "S=Subtracao/" +
-				      "M=Multiplicacao/" +
-				      "D=Divisao/" +
-				      "V=Ver valor/" +
-				      "T=Terminar)" +
-				      "? ");
+		    System.out.print ("Sua jogada: \n
+		    					A - pedra \n
+		    					B - papel \n
+		    					C - tesoura\n");
 
 		    try
 		    {

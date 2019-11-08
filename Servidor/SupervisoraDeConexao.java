@@ -84,10 +84,7 @@ public class SupervisoraDeConexao extends Thread
                 if      (comunicado==null)
                     return;
 
-                if(comunicado instanceof PedidoDeNome)
-                	this.jogador.setNome((PedidoDeNome) comunicado.getNome())
-				else
-                	nmrJogadas++;
+               	nmrJogadas++;
 
                if(comunicado instanceof PedidoDeJogada)
                 	this.jogador.setJogada(((PedidoDeJogada)comunicado).getValorJogada());
