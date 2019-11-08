@@ -12,8 +12,7 @@ public class Parceiro
 
     public Parceiro (Socket             conexao,
                      ObjectInputStream  receptor,
-                     ObjectOutputStream transmissor,
-                     String nome)
+                     ObjectOutputStream transmissor)
                      throws Exception // se parametro nulos
     {
         if (conexao==null)
@@ -24,13 +23,10 @@ public class Parceiro
 
         if (transmissor==null)
             throw new Exception ("Transmissor ausente");
-        if (nome==null)
-            throw new Exception ("Nome ausente");
 
         this.conexao     = conexao;
         this.receptor    = receptor;
         this.transmissor = transmissor;
-        this.nome = nome;
     }
 
     public void receba (Comunicado x) throws Exception
@@ -58,11 +54,18 @@ public class Parceiro
         }
     }
 
-    public setJogada(Jogada jogada) throws Exception
+    public void setJogada(Jogada jogada) throws Exception
     {
 		if(jogada == null)
 			throw new Exception("Jogada inválida");
 		this.jogada = jogada;
+	}
+
+	public void setNome(String nome) throws Exception
+	{
+		if(nome == null)
+			throw new Exception("Nome inválido!");
+		this.nome = nome;
 	}
 
 

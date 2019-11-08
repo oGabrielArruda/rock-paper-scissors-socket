@@ -2,7 +2,7 @@ public class Jogada
 {
 	private String valor;
 
-	public Jogada(String valor)
+	public Jogada(String valor) throws Exception
 	{
 		if(valor == null)
 			throw new Exception("Valor para jogada inválida");
@@ -15,10 +15,9 @@ public class Jogada
 			return 0;
 		if( (this.valor.equals("tesoura") && outra.valor.equals("papel")) ||
 		(this.valor.equals("pedra") && outra.valor.equals("tesoura")) ||
-		(this.valor.equals("papel") && outra.valor.equals("pedra")));
+		(this.valor.equals("papel") && outra.valor.equals("pedra")))
 			return 1;
 
 		return -1;
-
 	}
 }

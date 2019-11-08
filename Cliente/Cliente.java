@@ -66,21 +66,10 @@ public class Cliente
 		    return;
 		}
 
-		String nome = null;
-		try
-		{
-			nome = Teclado.getUmString();
-		}
-		catch(Exception ex)
-		{
-			Syste.err.println("Nome inválido!");
-			return;
-		}
-
 		Parceiro servidor=null;
 		try
 		{
-		    servidor = new Parceiro (conexao, receptor, transmissor, nome);
+		    servidor = new Parceiro (conexao, receptor, transmissor);
 		}
 		catch (Exception erro)
 		{
@@ -90,24 +79,35 @@ public class Cliente
 		    return;
 		}
 
+		String nome = null;
+		try
+		{
+			System.out.println("Digite seu nome:\n");
+			nome = Teclado.getUmString();
+		}
+		catch(Exception ex)
+		{
+
+		}
+
 		char opcao=' ';
 		do
 		{
-		    System.out.print ("Sua jogada: \n
-		    					A - pedra \n
-		    					B - papel \n
-		    					C - tesoura\n");
+		    System.out.print ("Sua jogada: \n"+
+		    					"A - pedra \n" +
+		    					"B - papel \n" +
+		    					"C - tesoura\n");
 
 		    try
 		    {
-			opcao = Character.toUpperCase(Teclado.getUmChar());
+				opcao = Character.toUpperCase(Teclado.getUmChar());
 		    }
 		    catch (Exception erro)
 		    {
-			System.err.println ("Opcao invalida!\n");
-			continue;
+				System.err.println ("Opcao invalida!\n");
+				continue;
 		    }
-		   if ("ASMDVT".indexOf(opcao)==-1)
+		   if ("ABC".indexOf(opcao)==-1)
 		   {
 			System.err.println ("Opcao invalida!\n");
 			continue;
@@ -116,42 +116,22 @@ public class Cliente
 			try
 			{
 				double valor=0;
-				if ("ASMD".indexOf(opcao)!=-1)
+				if ("ABC".indexOf(opcao)!=-1)
 				{
-					System.out.print ("Valor? ");
-					try
-					{
-						valor = Teclado.getUmDouble();
-					}
-					catch (Exception erro)
-					{
-						System.err.println ("Valor invalido!\n");
-						continue;
-					}
-
 					switch (opcao)
 					{
 						case 'A':
-							servidor.receba (new PedidoDeAdicao (valor));
+							servidor.receba (new PedidoDeJogada("pedra"));
 							break;
 
-						case 'S':
-							servidor.receba (new PedidoDeSubtracao (valor));
+						case 'B':
+							servidor.receba (new PedidoDeJogada("papel"));
 							break;
 
-						case 'M':
-							servidor.receba (new PedidoDeMultiplicacao (valor));
+						case 'C':
+							servidor.receba (new PedidoDeJogada("tesoura"));
 							break;
-
-						case 'D':
-							servidor.receba (new PedidoDeDivisao (valor));
 					}
-				}
-				else if (opcao=='V')
-				{
-					servidor.receba (new PedidoDeResultado ());
-					Resultado resultado = (Resultado)servidor.envie ();
-					System.out.println ("Resultado atual: "+resultado.getValorResultante());
 				}
 			}
 			catch (Exception erro)
