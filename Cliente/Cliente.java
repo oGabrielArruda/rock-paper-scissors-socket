@@ -84,10 +84,12 @@ public class Cliente
 		{
 			System.out.println("Digite seu nome:\n");
 			nome = Teclado.getUmString();
+			servidor.receba(new PedidoDeNome(nome));
 		}
 		catch(Exception ex)
 		{
-
+		    System.err.println ("Nome inválido!\n");
+		    return;
 		}
 
 		char opcao=' ';
@@ -96,7 +98,8 @@ public class Cliente
 		    System.out.print ("Sua jogada: \n"+
 		    					"A - pedra \n" +
 		    					"B - papel \n" +
-		    					"C - tesoura\n");
+		    					"C - tesoura\n" +
+		    					"Z - Sair do jogo\n");
 
 		    try
 		    {
@@ -107,7 +110,7 @@ public class Cliente
 				System.err.println ("Opcao invalida!\n");
 				continue;
 		    }
-		   if ("ABC".indexOf(opcao)==-1)
+		   if ("ABCZ".indexOf(opcao)==-1)
 		   {
 			System.err.println ("Opcao invalida!\n");
 			continue;
@@ -142,6 +145,6 @@ public class Cliente
 				System.err.println ("e volte a tentar mais tarde!");
 			}
 		}
-		while (opcao != 'T');
+		while (opcao != 'Z');
     	}
 }
