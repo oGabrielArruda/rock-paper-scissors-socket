@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Cliente
 {
-	public static final String HOST_PADRAO  = "177.220.18.44";
+	public static final String HOST_PADRAO  = "localhost";
 	public static final int    PORTA_PADRAO = 3000;
 
 	public static void main (String[] args)
@@ -134,6 +134,15 @@ public class Cliente
 						case 'C':
 							servidor.receba (new PedidoDeJogada("tesoura"));
 							break;
+					}
+					try
+					{
+						Resultado resultado = (Resultado) servidor.envie();
+						System.out.print("Ganhador: " + resultado.getGanhador());
+					}
+					catch(Exception e)
+					{
+						// se não conseguiu pegar o resultado quer dizer que o outro jogador não jogou
 					}
 				}
 			}

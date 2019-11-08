@@ -68,6 +68,15 @@ public class Parceiro
 		this.nome = nome;
 	}
 
+	public Jogada getJogada()
+	{
+		return this.jogada;
+	}
+
+	public String getNome()
+	{
+		return this.nome;
+	}
 
     public void adeus () throws Exception
     {
