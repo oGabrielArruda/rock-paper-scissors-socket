@@ -86,6 +86,7 @@ public class SupervisoraDeConexao extends Thread
 				        this.jogador.setNome(((PedidoDeNome)comunicado).getNome());
 				  else
 				  {
+					  nmrJogadas++;
 
              		  if(comunicado instanceof PedidoDeJogada)
              		   	this.jogador.setJogada(((PedidoDeJogada)comunicado).getValorJogada());

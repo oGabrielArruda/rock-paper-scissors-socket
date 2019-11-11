@@ -132,22 +132,17 @@ public class Cliente
 							break;
 
 						case 'C':
-						try{
 							servidor.receba (new PedidoDeJogada("tesoura"));
-						}
-						catch(Exception e){
-							System.out.println(e.getMessage());
-							}
 							break;
 					}
 					try
 					{
 						Resultado resultado = (Resultado) servidor.envie();
-						System.out.print("Ganhador: " + resultado.getGanhador());
+						System.out.println("Ganhador: " + resultado.getGanhador() + "\n");
 					}
 					catch(Exception e)
 					{
-						// se não conseguiu pegar o resultado quer dizer que o outro jogador não jogou
+						System.out.println("aaa");
 					}
 				}
 			}

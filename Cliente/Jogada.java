@@ -1,4 +1,4 @@
-public class Jogada
+public class Jogada extends Comunicado
 {
 	private String valor;
 
