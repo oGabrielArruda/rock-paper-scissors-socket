@@ -135,6 +135,6 @@ public class SupervisoraDeConexao extends Thread
 			return "empate";
 		if(comp > 0)
 			return this.jogadores.get(0).getNome();
-		return this.jogadores.get(0).getNome();
+		return this.jogadores.get(1).getNome();
 	}
 }
