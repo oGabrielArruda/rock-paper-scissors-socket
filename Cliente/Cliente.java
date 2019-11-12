@@ -12,7 +12,7 @@ public class Cliente
 		{
 		    System.err.println ("Uso esperado: java Cliente [HOST [PORTA]]\n");
 		    return;
-        	}
+        }
 
 		Socket conexao=null;
 		try
@@ -78,6 +78,20 @@ public class Cliente
 		    System.err.println ("Indique o servidor e a porta corretos!\n");
 		    return;
 		}
+
+		ComunicadoComecar podeComecar = null;
+		try
+		{
+			System.out.println("Aguardando parceiro conectar");
+			podeComecar =(ComunicadoComecar)servidor.envie();
+		}
+		catch(Exception ex)
+		{
+			System.out.println("Erro ao tentar começar o jogo!");
+		}
+
+		if(podeComecar.getPodeComecar() == false)
+			return;
 
 		String nome = null;
 		try

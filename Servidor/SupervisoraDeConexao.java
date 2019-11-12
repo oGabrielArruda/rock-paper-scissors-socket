@@ -77,6 +77,12 @@ public class SupervisoraDeConexao extends Thread
 
             for(;;)
             {
+				if(this.jogadores.size() != 2)
+					return;
+
+				for(Parceiro jogador: this.jogadores) // se entrou aqui é pq tem 2 usuarios conectados
+					jogador.receba(new ComunicadoComecar(true));
+
                 Comunicado comunicado = this.jogador.envie ();
 
                  if(comunicado==null)
