@@ -79,20 +79,6 @@ public class Cliente
 		    return;
 		}
 
-		ComunicadoComecar podeComecar = null;
-		try
-		{
-			System.out.println("Aguardando parceiro conectar");
-			podeComecar =(ComunicadoComecar)servidor.envie();
-		}
-		catch(Exception ex)
-		{
-			System.out.println("Erro ao tentar começar o jogo!");
-		}
-
-		if(podeComecar.getPodeComecar() == false)
-			return;
-
 		String nome = null;
 		try
 		{
