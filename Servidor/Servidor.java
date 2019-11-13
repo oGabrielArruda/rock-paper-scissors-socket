@@ -21,10 +21,10 @@ public class Servidor
 		AceitadoraDeConexao aceitadoraDeConexao = null;
 		try
 		{
-			aceitadoraDeConexao = new AceitadoraDeConexao(porta, jogadores);
+			 aceitadoraDeConexao = new AceitadoraDeConexao(porta, jogadores);
 			 try
 			 {
-			     System.out.println("Ip para jogo: "+InetAddress.getLocalHost().getHostAddress());
+			     System.out.println("\nIp para jogo: "+InetAddress.getLocalHost().getHostAddress()+"\n");
 			 }
 			 catch(Exception e)
        		 {}

@@ -75,7 +75,6 @@ public class Cliente
 		catch (Exception erro)
 		{
 		    erro.printStackTrace();
-
 		    System.err.println ("Indique o servidor e a porta corretos!\n");
 		    return;
 		}
@@ -152,8 +151,14 @@ public class Cliente
 					}
 					catch(Exception e)
 					{
-						System.out.println("aaa");
+						e.printStackTrace();
+						System.err.println("Erro ao escolher sua jogada");
+						return;
 					}
+				}
+				else if(opcao == 'Z')
+				{
+					servidor.receba(new PedidoParaSair());
 				}
 			}
 			catch (Exception erro)
