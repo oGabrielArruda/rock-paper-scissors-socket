@@ -3,15 +3,18 @@ public class Servidor
 {
 	public static void main(String[] args)
 	{
-		if(args.length > 1)
+		System.out.println("Indique a porta desejada:");
+		String porta = null;
+		try
 		{
-			System.err.println("Uso esperado: java Servidor [porta]");
+			porta = Teclado.getUmString();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.err.println("Valor inválido");
 			return;
 		}
-
-		String porta = null;
-		if(args.length == 1)
-			porta = args[0];
 		ArrayList<Parceiro> jogadores = new ArrayList<Parceiro>();
 
 		AceitadoraDeConexao aceitadoraDeConexao = null;

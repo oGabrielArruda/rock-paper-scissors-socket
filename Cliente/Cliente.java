@@ -3,29 +3,31 @@ import java.io.*;
 
 public class Cliente
 {
-	public static final String HOST_PADRAO  = "localhost";
-	public static final int    PORTA_PADRAO = 3000;
-
 	public static void main (String[] args)
 	{
-		if (args.length>2)
+		System.out.println(" ~~ Jogo  Pedra Papel Tesoura ~~ ");
+		System.out.println("Para começar, digite o ip e porta da sala desejada");
+		System.out.println("Caso deseja realizar um jogo local, digite localhost");
+
+		String host = null;
+		int porta = 0;
+		try
 		{
-		    System.err.println ("Uso esperado: java Cliente [HOST [PORTA]]\n");
-		    return;
-        }
+			System.out.println("Ip:");
+			host = Teclado.getUmString();
+			System.out.println("Porta:");
+			porta = Teclado.getUmInt();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			System.err.println("Valores inválidos");
+			return;
+		}
 
 		Socket conexao=null;
 		try
 		{
-		    String host = Cliente.HOST_PADRAO;
-		    int    porta= Cliente.PORTA_PADRAO;
-
-		    if (args.length>0)
-			host = args[0];
-
-		    if (args.length==2)
-			porta = Integer.parseInt(args[1]);
-		    System.out.println (host+" "+porta);
 		    conexao = new Socket (host, porta);
 		}
 		catch (Exception erro)
@@ -61,7 +63,6 @@ public class Cliente
 		catch (Exception erro)
 		{
 		    erro.printStackTrace();
-
 		    System.err.println ("Indique o servidor e a porta corretos!\n");
 		    return;
 		}
