@@ -80,6 +80,16 @@ public class Cliente
 		    return;
 		}
 
+
+		try
+		{
+			System.out.println("Aguardando um oponente...");
+			ComunicadoComecar podeIr = (ComunicadoComecar)servidor.envie();
+		}
+		catch(Exception e)
+		{}
+
+
 		String nome = null;
 		try
 		{
@@ -119,7 +129,6 @@ public class Cliente
 
 			try
 			{
-				double valor=0;
 				if ("ABC".indexOf(opcao)!=-1)
 				{
 					switch (opcao)

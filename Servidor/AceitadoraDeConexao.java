@@ -32,13 +32,6 @@ public class AceitadoraDeConexao extends Thread
             throw new Exception ("Usuarios ausentes");
 
         this.jogadores = jogadores;
-
-        try
-        {
-           	System.out.println("Ip para jogo: "+InetAddress.getLocalHost().getHostAddress());
-		}
-        catch(Exception e)
-        {}
     }
 
     public void run ()

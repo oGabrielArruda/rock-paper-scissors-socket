@@ -9,6 +9,7 @@ public class SupervisoraDeConexao extends Thread
     private Socket              conexao;
     private ArrayList<Parceiro> jogadores;
     private static int nmrJogadas = 0;
+    private static int qtdJogadores = 0;
 
     public SupervisoraDeConexao
     (Socket conexao, ArrayList<Parceiro> jogadores)
@@ -72,8 +73,13 @@ public class SupervisoraDeConexao extends Thread
             synchronized (this.jogadores)
             {
                 this.jogadores.add (this.jogador);
+                this.qtdJogadores++;
+                if(this.qtdJogadores == 2)
+                	for(Parceiro jogador: this.jogadores)
+                	{
+						jogador.receba(new ComunicadoComecar(true));
+					}
             }
-
 
             for(;;)
             {
@@ -91,7 +97,7 @@ public class SupervisoraDeConexao extends Thread
              		  if(comunicado instanceof PedidoDeJogada)
              		   	this.jogador.setJogada(((PedidoDeJogada)comunicado).getValorJogada());
 
-
+					    System.out.println("jogada: " + nmrJogadas);
              		   if(nmrJogadas == 2)
              		   {
 							String ganhador = quemGanhou();

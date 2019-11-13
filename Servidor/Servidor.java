@@ -1,4 +1,5 @@
 import java.util.*;
+import java.net.*;
 public class Servidor
 {
 	public static void main(String[] args)
@@ -21,6 +22,12 @@ public class Servidor
 		try
 		{
 			aceitadoraDeConexao = new AceitadoraDeConexao(porta, jogadores);
+			 try
+			 {
+			     System.out.println("Ip para jogo: "+InetAddress.getLocalHost().getHostAddress());
+			 }
+			 catch(Exception e)
+       		 {}
 			aceitadoraDeConexao.start();
 		}
 		catch(Exception ex)
