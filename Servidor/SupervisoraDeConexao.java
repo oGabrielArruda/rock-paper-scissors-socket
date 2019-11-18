@@ -2,6 +2,16 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
+/**
+A classe SupervisoraDeConexao é responsável por manter o servidor ativo.
+@author Gabriel Alves Arruda
+@see java.io.*
+@see java.net.*
+@see java.util.*
+@since 2019
+*/
+
+
 public class SupervisoraDeConexao extends Thread
 {
     private double              valor=0;
@@ -11,6 +21,15 @@ public class SupervisoraDeConexao extends Thread
     private static int nmrJogadas = 0;
     private static int qtdJogadores = 0;
 
+    /**
+    Constroi uma nova instância da classe SupervisoraDeConexao.
+    Este construtor recebe uma conexao entre o servidor e o cliente e uma lista de jogadores.
+    @param conexao 	É a conexao entre o servidor e a aplicação.
+    @param jogadores	É a lista de jogadores conectados no momento.
+    @throws Exception	Caso a conexão seja nula.
+    @throws Exception	Se a lista estiver vazia.
+    */
+    
     public SupervisoraDeConexao
     (Socket conexao, ArrayList<Parceiro> jogadores)
     throws Exception
@@ -25,6 +44,17 @@ public class SupervisoraDeConexao extends Thread
         this.jogadores = jogadores;
     }
 
+    /**
+    Este é o método responsável por manter a comunicação ativa entre servidor e aplicação.
+    @see Socket#getInputStream().
+    @see Socket#getOutputStream().
+    @see ObjectInputStream#close()
+    @see ArrayList#add().
+    @see Parceiro#receba(Comunicado x).
+    @see Parceiro#envie().
+    @see Parceiro#setNome().
+    @see Parceiro#getNome().
+    */
     public void run ()
     {
         ObjectInputStream receptor=null;
