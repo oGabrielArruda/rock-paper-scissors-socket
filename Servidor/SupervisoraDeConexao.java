@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
 A classe SupervisoraDeConexao é responsável por manter o servidor ativo.
-@author Gabriel Alves Arruda
+@author Antônio Hideto Borges Kotsubo & Gabriel Alves Arruda & Matheus Seiji Luna Noda & Nouani Gabriel Sanches
 @see java.io.*
 @see java.net.*
 @see java.util.*
@@ -48,13 +48,20 @@ public class SupervisoraDeConexao extends Thread
     Este é o método responsável por manter a comunicação ativa entre servidor e aplicação.
     @see Socket#getInputStream().
     @see Socket#getOutputStream().
-    @see ObjectInputStream#close()
-    @see ArrayList#add().
+    @see ObjectInputStream#close().
+    @see ObjectOutputStream#close().
+    @see ArrayList#add(Parceiro parceiro).
     @see Parceiro#receba(Comunicado x).
     @see Parceiro#envie().
     @see Parceiro#setNome().
     @see Parceiro#getNome().
+    @see Parceiro#setJogada().
+    @see Parceiro#getValorJogada().
+    @see #quemGanhou().
+    @see ArrayList#remove(Parceiro parceiro).
+    @see Parceiro#adeus().
     */
+    
     public void run ()
     {
         ObjectInputStream receptor=null;
@@ -159,7 +166,16 @@ public class SupervisoraDeConexao extends Thread
             return;
         }
     }
-
+    
+    /**
+    O método quemGanhou() é responsável por verificar quem é o vencedor da rodada.
+    Comparando as jogadas, o método descobre a situação da rodada, se é empate ou se há um ganhador.
+    @see ArrayList#get(int index).
+    @see Jogada#getJogada().
+    @see Jogada#compareTo(Jogada outra).
+    @return	Retorna uma string revelendo a situação da rodada, se houve um vencedor ou um empate.
+    */
+    
     private String quemGanhou()
     {
 		Jogada jogada1 = this.jogadores.get(0).getJogada();
