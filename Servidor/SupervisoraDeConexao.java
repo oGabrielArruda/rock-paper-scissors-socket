@@ -4,11 +4,11 @@ import java.util.*;
 
 /**
 A classe SupervisoraDeConexao é responsável por manter o servidor ativo.
-@author Antônio Hideto Borges Kotsubo & Gabriel Alves Arruda & Matheus Seiji Luna Noda & Nouani Gabriel Sanches
-@see java.io.*
-@see java.net.*
-@see java.util.*
-@since 2019
+@author Antônio Hideto Borges Kotsubo & Gabriel Alves Arruda & Matheus Seiji Luna Noda & Nouani Gabriel Sanches.
+@see java.io.*.
+@see java.net.*.
+@see java.util.*.
+@since 2019.
 */
 
 
@@ -24,8 +24,8 @@ public class SupervisoraDeConexao extends Thread
     /**
     Constroi uma nova instância da classe SupervisoraDeConexao.
     Este construtor recebe uma conexao entre o servidor e o cliente e uma lista de jogadores.
-    @param conexao 	É a conexao entre o servidor e a aplicação.
-    @param jogadores	É a lista de jogadores conectados no momento.
+    @param  conexao 	É a conexao entre o servidor e a aplicação.
+    @param  jogadores	É a lista de jogadores conectados no momento.
     @throws Exception	Caso a conexão seja nula.
     @throws Exception	Se a lista estiver vazia.
     */
