@@ -3,7 +3,7 @@ import java.net.*;
 import java.util.*;
 
 /*
-A classe Parceiro diz respeito a um usuário em comunicação com o servidor
+A classe Parceiro diz respeito a um usuário em comunicação com o servidor.
 @author Antônio Hideto Borges Kotsubo & Gabriel Alves Arruda & Matheus Seiji Luna Noda & Nouani Gabriel Sanches.
 @see java.io.*.
 @see java.net.*.
@@ -23,9 +23,9 @@ public class Parceiro
     Constroi uma nova instância da classe Parceiro.
     Esta instância se refere a um usuário que estebelece uma conexão com o servidor, 
     recebendo e enviando informações para o mesmo.
-    @param conexao	Estabelece conexão com o servidor.
-    @param receptor	O servidor recebe informações provenientes do usuário.
-    @param transmissor	O usuário recebe informações provenientes do servidor.
+    @param  conexao	Estabelece conexão com o servidor.
+    @param  receptor	O servidor recebe informações provenientes do usuário.
+    @param  transmissor	O usuário recebe informações provenientes do servidor.
     @throws Exception	Se a conexão for nula.
     @throws Exception	Se o receptor for nulo.
     @throws Exception	Se o transmissor for nulo.
@@ -92,7 +92,7 @@ public class Parceiro
 
     /**
     O método setJogada guarda uma jogada realizada pelo usuário.
-    @param jogada	Uma jogada do usuário.
+    @param  jogada	Uma jogada do usuário.
     @throws Exception	Se a jogada for nula.
     */
 	
@@ -105,7 +105,7 @@ public class Parceiro
 	
 	/**
 	Este método guarda o nome passado pelo usuário.
-	@param nome		É uma string com o nome passado.
+	@param  nome		É uma string com o nome passado.
 	@throws Exception	Se o nome for nulo.
 	*/
 
