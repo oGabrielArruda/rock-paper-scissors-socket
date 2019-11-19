@@ -20,6 +20,11 @@ public class PedidoDeNome extends Comunicado
 		this.nome = nome;
 	}
 
+	/**
+	O método getNome() recupera o nome do usuário.
+	@return 	Retorna uma String contendo o nome desejado pelo usuário.
+	*/
+
 	public String getNome()
 	{
 		return this.nome;
