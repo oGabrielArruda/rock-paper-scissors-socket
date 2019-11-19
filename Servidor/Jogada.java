@@ -9,9 +9,9 @@ public class Jogada extends Comunicado
 	private String valor;
 	
 	/** 
-	Cria uma nova instância da classe Jogada.
+	Constroi uma nova instância da classe Jogada.
 	Esse método pede um parâmetro que corresponde ao valor da jogada do usuário.
-	@param valor		Esta string armazena a jogada do usuário.
+	@param  valor		Esta string armazena a jogada do usuário.
 	@throws Exception	Caso a jogada seja igual a cadeia vazia.
 	*/
 	
