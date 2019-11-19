@@ -11,7 +11,7 @@ public class PedidoDeJogada extends Comunicado
 	/**
 	Constroi uma nova instância da classe PedidoDeJogada.
 	No entanto, precisa de um parâmetro String que contenha o valor da jogada.
-	@param  strJogada	Uma String com o valor da jogada.
+	@param strJogada	Uma String com o valor da jogada.
 	@throws Exception	Se houver erro em alguma parte do programa que utilize essa classe.
 	*/
 	
