@@ -1,7 +1,7 @@
 /**
 A classe PedidoDeNome representa uma escolha de nome feita pelo usuário.
 @author Antônio Hideto Borges Kotsubo & Gabriel Alves Arruda & Matheus Seiji Luna Noda & Nouani Gabriel Sanches.
-@since 2019
+@since 2019.
 */
 
 public class PedidoDeNome extends Comunicado
