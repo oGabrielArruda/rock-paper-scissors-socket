@@ -3,8 +3,10 @@ import java.util.*;
 
 /** 
 A classe AceitadoraDeConexao realiza conexões entre o cliente e o servidor.
-@author Gabriel Alves Arruda
-@since 2019
+@author Antônio Hideto Borges Kotsubo & Gabriel Alves Arruda & Matheus Seiji Luna Noda & Nouani Gabriel Sanches.
+@see import java.net.*.
+@see import java.util.*.
+@since 2019.
 */
 
 public class AceitadoraDeConexao extends Thread
@@ -18,10 +20,11 @@ public class AceitadoraDeConexao extends Thread
     Constroi uma nova instância da classe AceitadoraDeConexao.
     No entanto, é necessário que se passe uma string que será a porta e
     um ArrayList com os jogadores.
-    @param escolha é a string na qual está armazenada a porta
-    @param jogadores é a lista de jogares da classe Parceiro
-    @throws Exception se a porta for inválida
-    @throws Exception se a lista de jogadores estiver vazia
+    @param escolha 	É a string na qual está armazenada a porta.
+    @param jogadores 	É a lista de jogares da classe Parceiro.
+    @see		Integer#Integer.parseInt(int value).
+    @throws Exception 	Se a porta for inválida.
+    @throws Exception 	Se a lista de jogadores estiver vazia.
     */
     
     public AceitadoraDeConexao
@@ -52,6 +55,8 @@ public class AceitadoraDeConexao extends Thread
 	
     /**
     Este é o método responsável por aceitar as conexões entre o servidor e o cliente.
+    @see ServerSocket#accept().
+    @see SupervisoraDeConexao#start().
     */
 
     public void run ()
