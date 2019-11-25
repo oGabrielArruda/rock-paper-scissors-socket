@@ -43,7 +43,7 @@ public class PedidoDeNome extends Comunicado
 			return true;
 		if(obj.getClass() != this.getClass())
 			return false;
-		PedidoDeJogada pedido = (PedidoDeJogada)obj;
+		PedidoDeNome pedido = (PedidoDeNome)obj;
 		if(pedido.nome != this.nome)
 			return false;
 		return true;
