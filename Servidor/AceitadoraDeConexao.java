@@ -85,4 +85,48 @@ public class AceitadoraDeConexao extends Thread
             supervisoraDeConexao.start();
         }
     }
+    
+    public String toString()
+    {
+    	String ret = "Pedido: " + this.pedido + "Jogadores: ";
+	
+	for(int i=0; i < this.jogadores.size(); i++)
+	{
+		ret += this.jogadores.get(i).getNome() + " ";
+	}
+	return ret;
+    }
+    
+    public boolean equals()
+    {
+	if(obj == null)
+		return false;
+	if(obj == this)
+		return true;
+	if(obj.getClass() != this.getClass())
+		return false;
+	AceitadoraDeConexao aceitadora = (AceitadoraDeConexao)
+	if(aceitadora.pedido != this.pedido)
+		return false;
+		
+	for(int i=0; i < this.jogadores.size(); i++)
+	{
+		if(this.jogadores.get(i).getNome() != aceitadora.jogadores.get(i).getNome())
+			return false;
+	}
+	return true;
+    }
+    
+    public int hashCode()
+    {
+    	int ret = 666;
+	
+	ret = ret * 11 + this.pedido.hashCode();
+	
+	for(int i = 0; i < this.jogadores.size(); i++)
+	{
+		ret = ret * 11 + this.jogadores.get(i).hashCode();
+	}
+	return ret;
+    }
 }
