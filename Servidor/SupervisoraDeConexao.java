@@ -194,12 +194,13 @@ public class SupervisoraDeConexao extends Thread
 	
     public String toString()
     {
-    	String out =  "Valor: " + this.valor + " Jogador: " + this.jogador + " Conexão: " + this.conexao + " Jogadores: ";
+    	String ret =  "Valor: " + this.valor + " Jogador: " + this.jogador + " Conexão: " + this.conexao + " Jogadores: ";
 	
 	for(int i=0; i < this.jogadores.size(); i++)
 	{
-		out += this.jogadores.get(i).getNome() + " ";
+		ret += this.jogadores.get(i).getNome() + " ";
 	}
+	return ret;
     }
     
     public boolean equals(Object obj)
@@ -216,7 +217,7 @@ public class SupervisoraDeConexao extends Thread
 		
 	for(int i=0; i < this.jogadores.size(); i++)
 	{
-		if(supervisora.jogadores.get(i) != this.jogadores.get(i))
+		if(!supervisora.jogadores.get(i).equals(this.jogadores.get(i)))
 			return false;
 	}
 	
