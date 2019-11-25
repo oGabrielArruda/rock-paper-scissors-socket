@@ -105,7 +105,7 @@ public class AceitadoraDeConexao extends Thread
 		return true;
 	if(obj.getClass() != this.getClass())
 		return false;
-	AceitadoraDeConexao aceitadora = (AceitadoraDeConexao)
+	AceitadoraDeConexao aceitadora = (AceitadoraDeConexao)obj;
 	if(aceitadora.pedido != this.pedido)
 		return false;
 		
