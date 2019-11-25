@@ -20,7 +20,8 @@ public class SupervisoraDeConexao extends Thread
     private ArrayList<Parceiro> jogadores;
     private static int nmrJogadas = 0;
     private static int qtdJogadores = 0;
-
+    
+   
     /**
     Constroi uma nova instância da classe SupervisoraDeConexao.
     Este construtor recebe uma conexao entre o servidor e o cliente e uma lista de jogadores.
@@ -189,4 +190,52 @@ public class SupervisoraDeConexao extends Thread
 			return this.jogadores.get(0).getNome();
 		return this.jogadores.get(1).getNome();
 	}
+	
+	
+    public String toString()
+    {
+    	String out =  "Valor: " + this.valor + " Jogador: " + this.jogador + " Conexão: " + this.conexao + " Jogadores: ";
+	
+	for(int i=0; i < this.jogadores.size(); i++)
+	{
+		out += this.jogadores.get(i).getNome() + " ";
+	}
+    }
+    
+    public boolean equals(Object obj)
+    {
+    	if(obj == null)
+		return false;
+	if(obj == this)
+		return true;
+	if(obj.getClass() != this.getClass())
+		return false;
+	SupervisoraDeConexao supervisora = (SupervisoraDeConexao)obj;
+	if(supervisora.valor != this.valor || supervisora.jogador != this.jogador || supervisora.conexao != this.conexao)
+		return false;
+		
+	for(int i=0; i < this.jogadores.size(); i++)
+	{
+		if(supervisora.jogadores.get(i) != this.jogadores.get(i))
+			return false;
+	}
+	
+	return true;
+    }
+    
+    public int hashCode()
+    {
+    	int ret = 666;
+	
+	ret = ret * 11 + new Double(valor).hashCode();
+	ret = ret * 11 + this.jogador.hashCode();
+	ret = ret * 11 + this.conexao.hashCode();
+	for(int i=0; i < this.jogadores.size(); i++)
+	{
+		ret = ret * 11 + this.jogadores.get(i).hashCode();
+	}
+	
+	return ret;
+    }
+
 }
