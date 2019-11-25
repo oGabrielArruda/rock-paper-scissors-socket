@@ -185,10 +185,10 @@ public class Parceiro
     {
 	    int ret = 666;
 	    
-	    ret = ret * 11 + new Socket(this.conexao).hashCode();
-	    ret = ret * 11 + new ObjectOutputStream(this.transmissor).hashCode();
-	    ret = ret * 11 + new ObjectInputStream(this.receptor).hashCode();
-	    ret = ret * 11 + new Jogada(this.jogada).hashCode();
+	    ret = ret * 11 + this.conexao.hashCode();
+	    ret = ret * 11 + this.transmissor.hashCode();
+	    ret = ret * 11 + this.receptor.hashCode();
+	    ret = ret * 11 + this.jogada.hashCode();
 	    ret = ret * 11 + this.nome.hashCode();
 	    
 	    retrun true;
