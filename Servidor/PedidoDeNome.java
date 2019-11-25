@@ -29,4 +29,32 @@ public class PedidoDeNome extends Comunicado
 	{
 		return this.nome;
 	}
+	
+	public String toString()
+	{
+		return "Nome: " + this.nome;
+	}
+	
+	public boolean equals(Object obj)
+	{
+		if(obj == null)
+			return false;
+		if(obj == this)
+			return true;
+		if(obj.getClass() != this.getClass())
+			return false;
+		PedidoDeJogada pedido = (PedidoDeJogada)obj;
+		if(pedido.nome != this.nome)
+			return false;
+		return true;
+	}
+	
+	public int hashCode()
+	{
+		int ret = 666;
+		
+		ret = ret * 11 + this.nome.hashCode();
+		
+		return ret;
+	}
 }
