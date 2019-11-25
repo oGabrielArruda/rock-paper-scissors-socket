@@ -60,7 +60,7 @@ public class PedidoDeJogada extends Comunicado
 	{
 		int ret = 666;
 		
-		ret = ret * 11 + new Jogada(this.jogada).hashCode();
+		ret = ret * 11 + this.jogada.hashCode();
 		
 		return ret;
 	}
