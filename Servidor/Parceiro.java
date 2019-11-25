@@ -191,7 +191,7 @@ public class Parceiro
 	    ret = ret * 11 + this.jogada.hashCode();
 	    ret = ret * 11 + this.nome.hashCode();
 	    
-	    retrun true;
+	    return ret;
     }
 		
 }
