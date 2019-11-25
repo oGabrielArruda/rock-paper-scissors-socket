@@ -36,7 +36,7 @@ public class ComunicadoComecar extends Comunicado
 		return "Não começar";
 	}
 	
-	public boolean equals(Object obj) throws Exception
+	public boolean equals(Object obj)
 	{
 		if(obj == null)
 			return false;
