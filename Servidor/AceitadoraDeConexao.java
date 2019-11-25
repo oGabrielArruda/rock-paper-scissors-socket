@@ -97,7 +97,7 @@ public class AceitadoraDeConexao extends Thread
 	return ret;
     }
     
-    public boolean equals()
+    public boolean equals(Object obj)
     {
 	if(obj == null)
 		return false;
@@ -111,7 +111,7 @@ public class AceitadoraDeConexao extends Thread
 		
 	for(int i=0; i < this.jogadores.size(); i++)
 	{
-		if(this.jogadores.get(i).getNome() != aceitadora.jogadores.get(i).getNome())
+		if(this.jogadores.get(i).equals(aceitadora.jogadores.get(i)))
 			return false;
 	}
 	return true;
