@@ -46,7 +46,7 @@ public class Resultado extends Comunicado
 		if(obj.getClass() != this.getClass())
 			return false;
 		Resultado result = (Resultado)obj;
-		if(result.ganhador != this.ganhdor)
+		if(result.ganhador != this.ganhador)
 			return false;
 		return true;
 	}
