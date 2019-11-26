@@ -4,6 +4,7 @@ public class Servidor
 {
 	public static void main(String[] args)
 	{
+		System.out.println("~Hospedar servidor para jogo~\n");
 		System.out.println("Indique a porta desejada:");
 		String porta = null;
 		try
