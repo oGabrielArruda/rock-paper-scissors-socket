@@ -36,32 +36,4 @@ public class PedidoDeJogada extends Comunicado
 	{
 		return this.jogada;
 	}
-	
-	public String toString()
-	{
-		return "Jogada: " + this.jogada;
-	}
-	
-	public boolean equals(Object obj)
-	{
-		if(obj == null)
-			return false;
-		if(obj == this)
-			return true;
-		if(obj.getClass() != this.getClass())
-			return false;
-		PedidoDeJogada pedido = (PedidoDeJogada)obj;
-		if(pedido.jogada != this.jogada)
-			return false;
-		return true;
-	}
-	
-	public int hashCode()
-	{
-		int ret = 666;
-		
-		ret = ret * 11 + this.jogada.hashCode();
-		
-		return ret;
-	}
 }
