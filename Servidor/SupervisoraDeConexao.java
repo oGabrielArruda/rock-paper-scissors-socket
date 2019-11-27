@@ -20,7 +20,8 @@ public class SupervisoraDeConexao extends Thread
     private ArrayList<Parceiro> jogadores;
     private static int nmrJogadas = 0;
     private static int qtdJogadores = 0;
-
+    
+   
     /**
     Constroi uma nova instância da classe SupervisoraDeConexao.
     Este construtor recebe uma conexao entre o servidor e o cliente e uma lista de jogadores.
@@ -188,5 +189,5 @@ public class SupervisoraDeConexao extends Thread
 		if(comp > 0)
 			return this.jogadores.get(0).getNome();
 		return this.jogadores.get(1).getNome();
-	}
+     }
 }
