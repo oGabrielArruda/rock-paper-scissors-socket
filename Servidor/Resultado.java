@@ -31,32 +31,4 @@ public class Resultado extends Comunicado
 	{
 		return this.ganhador;
 	}
-	
-	public String toString()
-	{
-		return "Ganhador: " + this.ganhador;
-	}
-	
-	public boolean equals(Object obj)
-	{
-		if(obj == null)
-			return false;
-		if(obj == this)
-			return true;
-		if(obj.getClass() != this.getClass())
-			return false;
-		Resultado result = (Resultado)obj;
-		if(result.ganhador != this.ganhador)
-			return false;
-		return true;
-	}
-	
-	public int hashCode()
-	{
-		int ret = 666;
-		
-		ret = ret * 11 + this.ganhador.hashCode();
-		
-		return ret;
-	}
 }
