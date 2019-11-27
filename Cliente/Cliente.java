@@ -83,6 +83,7 @@ public class Cliente
 
 		try
 		{
+			System.out.println("Conectado! \n");
 			System.out.println("Aguardando um oponente...");
 			ComunicadoComecar podeIr = (ComunicadoComecar)servidor.envie();
 		}
@@ -188,3 +189,4 @@ public class Cliente
 		while (opcao != 'Z');
     	}
 }
+
