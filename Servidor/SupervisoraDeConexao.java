@@ -189,54 +189,5 @@ public class SupervisoraDeConexao extends Thread
 		if(comp > 0)
 			return this.jogadores.get(0).getNome();
 		return this.jogadores.get(1).getNome();
-	}
-	
-	
-    public String toString()
-    {
-    	String ret =  "Valor: " + this.valor + " Jogador: " + this.jogador + " Conexão: " + this.conexao + " Jogadores: ";
-	
-	for(int i=0; i < this.jogadores.size(); i++)
-	{
-		ret += this.jogadores.get(i).getNome() + " ";
-	}
-	return ret;
-    }
-    
-    public boolean equals(Object obj)
-    {
-    	if(obj == null)
-		return false;
-	if(obj == this)
-		return true;
-	if(obj.getClass() != this.getClass())
-		return false;
-	SupervisoraDeConexao supervisora = (SupervisoraDeConexao)obj;
-	if(supervisora.valor != this.valor || supervisora.jogador != this.jogador || supervisora.conexao != this.conexao)
-		return false;
-		
-	for(int i=0; i < this.jogadores.size(); i++)
-	{
-		if(!supervisora.jogadores.get(i).equals(this.jogadores.get(i)))
-			return false;
-	}
-	
-	return true;
-    }
-    
-    public int hashCode()
-    {
-    	int ret = 666;
-	
-	ret = ret * 11 + new Double(valor).hashCode();
-	ret = ret * 11 + this.jogador.hashCode();
-	ret = ret * 11 + this.conexao.hashCode();
-	for(int i=0; i < this.jogadores.size(); i++)
-	{
-		ret = ret * 11 + this.jogadores.get(i).hashCode();
-	}
-	
-	return ret;
-    }
-
+     }
 }
