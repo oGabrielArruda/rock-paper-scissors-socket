@@ -1,12 +1,13 @@
 import java.net.*;
 import java.io.*;
+import java.util.Scanner;
 
 public class Cliente
 {
 	public static void main (String[] args)
 	{
 		System.out.println(" ~~ Jogo  Pedra Papel Tesoura ~~ ");
-		System.out.println("Para comeÁar, digite o ip e porta da sala desejada");
+		System.out.println("Para come√ßar, digite o ip e porta da sala desejada");
 		System.out.println("Caso deseja realizar um jogo local, digite localhost");
 
 		String host = null;
@@ -21,7 +22,7 @@ public class Cliente
 		catch(Exception e)
 		{
 			e.printStackTrace();
-			System.err.println("Valores inv·lidos");
+			System.err.println("Valores inv√°lidos");
 			return;
 		}
 
@@ -98,13 +99,23 @@ public class Cliente
 		}
 		catch(Exception ex)
 		{
-		    System.err.println ("Nome inv·lido!\n");
+		    System.err.println ("Nome inv√°lido!\n");
 		    return;
 		}
 
 		char opcao=' ';
 		do
 		{
+			try
+			{
+				new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+				System.out.println(" ~~ Jogo  Pedra Papel Tesoura ~~ \n");
+				System.out.println("Usu√°rio: " + nome);
+			}
+			catch(Exception erro)
+			{
+				System.err.println(erro.getMessage());
+			}
 		    System.out.print ("Sua jogada: \n"+
 		    					"A - pedra \n" +
 		    					"B - papel \n" +
@@ -167,6 +178,11 @@ public class Cliente
 				System.err.println ("Tente novamente!");
 				System.err.println ("Caso o erro persista, termine o programa");
 				System.err.println ("e volte a tentar mais tarde!");
+			}
+			if(opcao != 'Z')
+			{
+				System.out.println("Pressione [Enter] para continuar");
+				new Scanner(System.in).nextLine();
 			}
 		}
 		while (opcao != 'Z');
