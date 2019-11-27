@@ -20,8 +20,8 @@ public class SupervisoraDeConexao extends Thread
     private ArrayList<Parceiro> jogadores;
     private static int nmrJogadas = 0;
     private static int qtdJogadores = 0;
-    
-   
+
+
     /**
     Constroi uma nova instância da classe SupervisoraDeConexao.
     Este construtor recebe uma conexao entre o servidor e o cliente e uma lista de jogadores.
@@ -30,7 +30,7 @@ public class SupervisoraDeConexao extends Thread
     @throws Exception	Caso a conexão seja nula.
     @throws Exception	Se a lista estiver vazia.
     */
-    
+
     public SupervisoraDeConexao
     (Socket conexao, ArrayList<Parceiro> jogadores)
     throws Exception
@@ -62,7 +62,7 @@ public class SupervisoraDeConexao extends Thread
     @see ArrayList#remove(Parceiro parceiro).
     @see Parceiro#adeus().
     */
-    
+
     public void run ()
     {
         ObjectInputStream receptor=null;
@@ -117,6 +117,10 @@ public class SupervisoraDeConexao extends Thread
                 	{
 						jogador.receba(new ComunicadoComecar(true));
 					}
+				else if(this.qtdJogadores > 2)
+				{
+					this.jogador.receba(new ComunicadoDeDesligamento());
+				}
             }
 
             for(;;)
@@ -135,7 +139,6 @@ public class SupervisoraDeConexao extends Thread
              		  if(comunicado instanceof PedidoDeJogada)
              		   	this.jogador.setJogada(((PedidoDeJogada)comunicado).getValorJogada());
 
-					    System.out.println("jogada: " + nmrJogadas);
              		   if(nmrJogadas == 2)
              		   {
 							String ganhador = quemGanhou();
@@ -167,7 +170,7 @@ public class SupervisoraDeConexao extends Thread
             return;
         }
     }
-    
+
     /**
     O método quemGanhou() é responsável por verificar quem é o vencedor da rodada.
     Comparando as jogadas, o método descobre a situação da rodada, se é empate ou se há um ganhador.
@@ -176,7 +179,7 @@ public class SupervisoraDeConexao extends Thread
     @see Jogada#compareTo(Jogada outra).
     @return	Retorna uma string revelendo a situação da rodada, se houve um vencedor ou um empate.
     */
-    
+
     private String quemGanhou()
     {
 		Jogada jogada1 = this.jogadores.get(0).getJogada();

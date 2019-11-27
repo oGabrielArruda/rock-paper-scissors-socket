@@ -85,7 +85,13 @@ public class Cliente
 		{
 			System.out.println("Conectado! \n");
 			System.out.println("Aguardando um oponente...");
-			ComunicadoComecar podeIr = (ComunicadoComecar)servidor.envie();
+			Comunicado comunicado = servidor.envie();
+			if(comunicado instanceof ComunicadoDeDesligamento)
+			{
+				System.out.println("Jogo cheio! 2/2");
+				System.out.println("Crie um servidor com outra porta!");
+				return;
+			}
 		}
 		catch(Exception e)
 		{}
