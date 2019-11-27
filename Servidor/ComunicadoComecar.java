@@ -28,36 +28,4 @@ public class ComunicadoComecar extends Comunicado
 	{
 		return this.podeIr;
 	}
-	
-	public String toString()
-	{
-		if(podeIr)
-			return "Começar";
-		return "Não começar";
-	}
-	
-	public boolean equals(Object obj)
-	{
-		if(obj == null)
-			return false;
-		
-		if(obj == this)
-			return true;
-		
-		if(this.getClass() != obj.getClass())
-			return false;
-		ComunicadoComecar comeca = (ComunicadoComecar)obj;
-		if(comeca.podeIr != this.podeIr)
-			return false;
-		return true;
-	}
-	
-	public int hashCode()
-	{
-		int ret = 666;
-		
-		ret = ret * 11 + new Boolean(podeIr).hashCode();
-		
-		return ret;
-	}
 }
