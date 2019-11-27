@@ -134,18 +134,18 @@ public class SupervisoraDeConexao extends Thread
 				        this.jogador.setNome(((PedidoDeNome)comunicado).getNome());
 				  else
 				  {
-					  nmrJogadas++;
-
              		  if(comunicado instanceof PedidoDeJogada)
-             		   	this.jogador.setJogada(((PedidoDeJogada)comunicado).getValorJogada());
-
-             		   if(nmrJogadas == 2)
-             		   {
-							String ganhador = quemGanhou();
-							for(Parceiro jogador:this.jogadores)
-             			   		jogador.receba(new Resultado(ganhador));
-             			   	nmrJogadas = 0;
-					    }
+             		  {
+						  	nmrJogadas++;
+						  	this.jogador.setJogada(((PedidoDeJogada)comunicado).getValorJogada());
+						  	if(nmrJogadas == 2)
+							{
+								String ganhador = quemGanhou();
+								for(Parceiro jogador:this.jogadores)
+							         jogador.receba(new Resultado(ganhador));
+							    nmrJogadas = 0;
+					        }
+					  }
                 		else if (comunicado instanceof PedidoParaSair)
                 		{
                 	    	synchronized (this.jogadores)
