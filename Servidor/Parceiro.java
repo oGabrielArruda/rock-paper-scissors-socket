@@ -156,42 +156,5 @@ public class Parceiro
         {
             throw new Exception ("Erro de desconexao");
         }
-    }
-
-    public String toString()
-    {
-	    return "Conexao: " + this.conexao + " Transmissor: " + this.transmissor + " Receptor: " + this.receptor + " Jogada: " + this.jogada + " Nome: " + this.nome;
-    }
-	
-    public boolean equals(Object obj)
-    {
-	    if(obj == null)
-		    return false;
-	    if(obj == this)
-		    return true;
-	    if(obj.getClass() != this.getClass())
-		    return false;
-	    Parceiro parceiro = (Parceiro)obj;
-	    if(parceiro.conexao != this.conexao || 
-	       parceiro.transmissor != this.transmissor ||
-	       parceiro.receptor != this.receptor || 
-	       parceiro.jogada != this.jogada || 
-	       parceiro.nome != this.nome)
-		return false;
-	    return true;
-    }
-	
-    public int hashCode()
-    {
-	    int ret = 666;
-	    
-	    ret = ret * 11 + this.conexao.hashCode();
-	    ret = ret * 11 + this.transmissor.hashCode();
-	    ret = ret * 11 + this.receptor.hashCode();
-	    ret = ret * 11 + this.jogada.hashCode();
-	    ret = ret * 11 + this.nome.hashCode();
-	    
-	    return ret;
-    }
-		
+    }	
 }
