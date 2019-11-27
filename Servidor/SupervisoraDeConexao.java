@@ -112,14 +112,14 @@ public class SupervisoraDeConexao extends Thread
             {
                 this.jogadores.add (this.jogador);
                 this.qtdJogadores++;
-                if(this.qtdJogadores == 2)
+                if(this.qtdJogadores == 2) // se tem 2 jogadores
                 	for(Parceiro jogador: this.jogadores)
                 	{
-						jogador.receba(new ComunicadoComecar(true));
+						jogador.receba(new ComunicadoComecar(true)); // cada jogador recebe o comunicado para iniciar o jogo
 					}
-				else if(this.qtdJogadores > 2)
+				else if(this.qtdJogadores > 2) // se a tiver 2 jogadores em jogo
 				{
-					this.jogador.receba(new ComunicadoDeDesligamento());
+					this.jogador.receba(new ComunicadoDeDesligamento()); // o usuario que tentou entrar é 'barrado'
 				}
             }
 
